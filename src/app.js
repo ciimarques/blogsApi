@@ -11,6 +11,7 @@ app.use(express.json());
 app.post('/login', authLoginController.login);
 app.post('/user', userController.createUser);
 app.get('/user', validateToken, userController.getAllUsers);
+app.get('/user/:id', validateToken, userController.getUserById);
 
 // não remova ou mova esse endpoint
 app.get('/', (_request, response) => {

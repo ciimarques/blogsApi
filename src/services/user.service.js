@@ -26,8 +26,14 @@ async function userGet() {
     attributes: { exclude: ['password'] } });
   return user;
 }
+async function userById(id) { 
+  const user = await connection.User.findByPk(id, {
+    attributes: { exclude: ['password'] } });
+  return user;
+}
 
 module.exports = {
   userCreate,
   userGet,
+  userById,
 };
