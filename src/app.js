@@ -13,6 +13,7 @@ app.post('/login', authLoginController.login);
 app.post('/user', userController.createUser);
 app.post('/categories', validateToken, categoriesController.createCategory);
 app.get('/user', validateToken, userController.getAllUsers);
+app.get('/categories', validateToken, categoriesController.getAllCategories);
 app.get('/user/:id', validateToken, userController.getUserById);
 
 // não remova ou mova esse endpoint

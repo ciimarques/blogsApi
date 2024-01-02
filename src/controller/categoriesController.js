@@ -1,4 +1,4 @@
-const categoryCreate = require('../services/categories.service');
+const { categoryCreate, categoriesGetAll } = require('../services/categories.service');
 
 async function createCategory(req, res) {
   const { name } = req.body;
@@ -10,6 +10,12 @@ async function createCategory(req, res) {
   res.status(201).json(newCategory);
 }
 
+async function getAllCategories(_req, res) {
+  const categories = await categoriesGetAll();
+  res.status(200).json(categories);
+}
+
 module.exports = { 
   createCategory,
+  getAllCategories,
 };

@@ -10,4 +10,12 @@ async function categoryCreate(name) {
   };
 }
 
-module.exports = categoryCreate;
+async function categoriesGetAll() {
+  const categories = await connection.Category.findAll();
+  return categories;
+}
+
+module.exports = {
+  categoryCreate,
+  categoriesGetAll,
+};
