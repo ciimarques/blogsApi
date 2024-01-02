@@ -8,7 +8,6 @@ const User = (sequelize, DataTypes) => {
     displayName: {
       type: DataTypes.STRING,
       allowNull: false,
-      field: 'display_name'
     },
     email: {
       type: DataTypes.STRING,
@@ -24,7 +23,8 @@ const User = (sequelize, DataTypes) => {
     }, 
   }, {
       tableName: 'users',
-      timestamps: false
+      timestamps: false,
+      underscored: true,
   })
 
   return model

@@ -12,7 +12,7 @@ const authLoginService = {
     const token = jwt.sign(
       {
         id: user.id,
-        displayName: user.display_name,
+        displayName: user.displayName,
         email: user.email,
         image: user.image,
       },
