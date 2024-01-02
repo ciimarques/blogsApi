@@ -21,4 +21,13 @@ async function userCreate({ email, password, displayName, image }) {
   return token;
 }
 
-module.exports = userCreate;
+async function userGet() {
+  const user = await connection.User.findAll({
+    attributes: { exclude: ['password'] } });
+  return user;
+}
+
+module.exports = {
+  userCreate,
+  userGet,
+};

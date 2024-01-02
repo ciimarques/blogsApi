@@ -1,6 +1,7 @@
 const express = require('express');
 const authLoginController = require('./controller/authLoginController');
 const userController = require('./controller/userController');
+const validateToken = require('./middleware/validToken');
 
 // ....
 
@@ -9,6 +10,7 @@ app.use(express.json());
 
 app.post('/login', authLoginController.login);
 app.post('/user', userController.createUser);
+app.get('/user', validateToken, userController.getAllUsers);
 
 // não remova ou mova esse endpoint
 app.get('/', (_request, response) => {

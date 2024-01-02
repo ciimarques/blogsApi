@@ -1,4 +1,4 @@
-const userCreate = require('../services/user.service');
+const { userCreate, userGet } = require('../services/user.service');
 
 function validName(displayName, res) {
   if (displayName.length < 8) {
@@ -44,7 +44,12 @@ async function createUser(req, res) {
     res.status(409).json({ message: error.message });
   }
 }
+async function getAllUsers(_req, res) {
+  const users = await userGet();
+  res.status(200).json(users);
+}
 
 module.exports = {
   createUser,
+  getAllUsers,
 };
