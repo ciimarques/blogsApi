@@ -18,6 +18,7 @@ app.get('/user', validateToken, userController.getAllUsers);
 app.get('/categories', validateToken, categoriesController.getAllCategories);
 app.get('/post', validateToken, blogpostController.getAllPost);
 app.get('/user/:id', validateToken, userController.getUserById);
+app.get('/post/:id', validateToken, blogpostController.getPostById);
 
 // não remova ou mova esse endpoint
 app.get('/', (_request, response) => {

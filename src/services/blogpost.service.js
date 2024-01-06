@@ -34,7 +34,22 @@ async function postGetAll() {
   return blogpost;
 }
 
+async function postById(id) { 
+  const postId = await connection.BlogPost.findByPk(id, {
+    include: [
+      {
+        model: connection.User, as: 'user', attributes: { exclude: ['password'] },
+      },
+      {
+        model: connection.Category, as: 'categories', through: { attributes: [] }, 
+      },
+    ],
+  });
+  return postId;
+}
+
 module.exports = {
   postCreate,
   postGetAll,
+  postById,
 };
