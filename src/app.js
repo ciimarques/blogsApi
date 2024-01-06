@@ -16,6 +16,7 @@ app.post('/categories', validateToken, categoriesController.createCategory);
 app.post('/post', validateToken, blogpostController.createPost);
 app.get('/user', validateToken, userController.getAllUsers);
 app.get('/categories', validateToken, categoriesController.getAllCategories);
+app.get('/post', validateToken, blogpostController.getAllPost);
 app.get('/user/:id', validateToken, userController.getUserById);
 
 // não remova ou mova esse endpoint

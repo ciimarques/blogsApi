@@ -1,4 +1,4 @@
-const postCreate = require('../services/blogpost.service');
+const { postCreate, postGetAll } = require('../services/blogpost.service');
 
 async function createPost(req, res) {
   const { title, content, categoryIds } = req.body;
@@ -16,6 +16,12 @@ async function createPost(req, res) {
   }
 }
 
+async function getAllPost(_req, res) {
+  const post = await postGetAll();
+  res.status(200).json(post);
+}
+
 module.exports = {
   createPost,
+  getAllPost,
 };

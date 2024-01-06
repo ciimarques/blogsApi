@@ -20,5 +20,21 @@ async function postCreate(title, content, userId, categoryIds) {
     )));
   return newPost;
 }
+async function postGetAll() {
+  const blogpost = await connection.BlogPost.findAll({
+    include: [
+      {
+        model: connection.User, as: 'user', attributes: { exclude: ['password'] },
+      },
+      {
+        model: connection.Category, as: 'categories', through: { attributes: [] }, 
+      },
+    ],
+  });
+  return blogpost;
+}
 
-module.exports = postCreate;
+module.exports = {
+  postCreate,
+  postGetAll,
+};
