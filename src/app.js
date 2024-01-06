@@ -3,6 +3,7 @@ const authLoginController = require('./controller/authLoginController');
 const userController = require('./controller/userController');
 const validateToken = require('./middleware/validToken');
 const categoriesController = require('./controller/categoriesController');
+const blogpostController = require('./controller/blogpostController');
 
 // ....
 
@@ -12,6 +13,7 @@ app.use(express.json());
 app.post('/login', authLoginController.login);
 app.post('/user', userController.createUser);
 app.post('/categories', validateToken, categoriesController.createCategory);
+app.post('/post', validateToken, blogpostController.createPost);
 app.get('/user', validateToken, userController.getAllUsers);
 app.get('/categories', validateToken, categoriesController.getAllCategories);
 app.get('/user/:id', validateToken, userController.getUserById);
