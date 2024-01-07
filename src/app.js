@@ -4,6 +4,7 @@ const userController = require('./controller/userController');
 const validateToken = require('./middleware/validToken');
 const categoriesController = require('./controller/categoriesController');
 const blogpostController = require('./controller/blogpostController');
+const postPutController = require('./controller/postPutController');
 
 // ....
 
@@ -19,6 +20,7 @@ app.get('/categories', validateToken, categoriesController.getAllCategories);
 app.get('/post', validateToken, blogpostController.getAllPost);
 app.get('/user/:id', validateToken, userController.getUserById);
 app.get('/post/:id', validateToken, blogpostController.getPostById);
+app.put('/post/:id', validateToken, postPutController.updatedPost);
 
 // não remova ou mova esse endpoint
 app.get('/', (_request, response) => {

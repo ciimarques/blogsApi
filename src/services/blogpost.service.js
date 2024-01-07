@@ -47,7 +47,7 @@ async function postById(id) {
   });
   return postId;
 }
-
+  
 module.exports = {
   postCreate,
   postGetAll,
